@@ -18,9 +18,9 @@ export default function HorizonSection() {
         </p>
         <p className="horizon-audiences">PROCESS DEVELOPMENT / MSAT / MANUFACTURING</p>
         <div className="scale-track" aria-label="Lab to plant continuity">
-          <span><i />LAB<small>DISCOVER</small></span>
-          <span><i />PILOT<small>TRANSFER</small></span>
-          <span><i />PLANT<small>CONTROL</small></span>
+          <span><i /><b>LAB</b><em /><small>DISCOVER</small></span>
+          <span><i /><b>PILOT</b><em /><small>TRANSFER</small></span>
+          <span><i /><b>PLANT</b><em /><small>CONTROL</small></span>
         </div>
       </div>
     </section>

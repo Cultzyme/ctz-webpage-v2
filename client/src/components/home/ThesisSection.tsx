@@ -8,7 +8,7 @@ export default function ThesisSection() {
         <ObservationLabel>FROM SPARSE DATA TO SELF-DRIVING BIOPROCESSING</ObservationLabel>
         <h2>More process truth.<br /><em>Less trial-and-error.</em></h2>
         <div className="thesis-copy">
-          <span>01 / FEWER BLIND ITERATIONS</span>
+          <span>FEWER BLIND ITERATIONS</span>
           <p>
             Most bioprocess decisions still rely on delayed samples, disconnected models and manual execution.
             Cultzyme converts live process state and model outputs into automated, traceable actions across
