@@ -2,6 +2,9 @@
 **/node_modules
 .pnpm-store/
 
+# Unused source video (compressed heroVideo.mp4 is the one actually used)
+client/src/assets/heroVideoOriginal.mp4
+
 # Build outputs
 dist/
 build/
