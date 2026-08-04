@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ContactStation from "@/components/ContactStation";
+import ContactStationPreview from "@/components/ContactStationPreview";
 import HeroSection from "@/components/home/HeroSection";
 import HorizonSection from "@/components/home/HorizonSection";
 import LoopSection from "@/components/home/LoopSection";
@@ -128,6 +129,7 @@ export default function Home() {
         <VisionSection />
         <HorizonSection />
         <ContactStation />
+        <ContactStationPreview />
       </main>
 
       <SiteFooter />
