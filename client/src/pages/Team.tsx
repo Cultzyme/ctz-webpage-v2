@@ -34,19 +34,19 @@ const FOUNDERS: Member[] = [
 ];
 
 const TEAM: Member[] = [
-  { name: "Julen Cao", role: "Head of Software", linkedin: "https://www.linkedin.com/in/julen-cao/", photo: julenCaoPhoto },
-  { name: "Alejandro Vicente", role: "Lead Bioprocess Engineer", linkedin: "https://www.linkedin.com/in/alejandro-vicente-413b79167/", photo: alejandroVicentePhoto },
-  { name: "Amit Chandrakar", role: "Mechanical Engineer", linkedin: "https://www.linkedin.com/in/amitchandrakar/", photo: amitChandrakarPhoto },
-  { name: "Micaela Lopez Renaud", role: "UI/UX Designer", linkedin: "https://www.linkedin.com/in/micaela-lopez-renaud/", photo: micaelaLopezRenaudPhoto },
-  { name: "Antonio Piatti Fadda", role: "Front-end Developer", linkedin: "https://www.linkedin.com/in/antoniopiattifadda/", photo: antonioPiattiFaddaPhoto },
-  { name: "Mathias Charconnet", role: "Data Scientist", linkedin: "https://www.linkedin.com/in/mathias-charconnet/", photo: mathiasCharconnetPhoto },
-  { name: "Sandra García", role: "Financial Analyst", linkedin: "https://www.linkedin.com/in/sandragarcíar/", photo: sandraGarciaPhoto },
-  { name: "Tiago Olo", role: "Founder Associate", linkedin: "https://www.linkedin.com/in/tiago-joao-olo/", photo: tiagoOloPhoto },
+  { name: "Julen Cao", role: "Head of Software", photo: julenCaoPhoto },
+  { name: "Alejandro Vicente", role: "Lead Bioprocess Engineer", photo: alejandroVicentePhoto },
+  { name: "Amit Chandrakar", role: "Mechanical Engineer", photo: amitChandrakarPhoto },
+  { name: "Micaela Lopez Renaud", role: "UI/UX Designer", photo: micaelaLopezRenaudPhoto },
+  { name: "Antonio Piatti Fadda", role: "Front-end Developer", photo: antonioPiattiFaddaPhoto },
+  { name: "Mathias Charconnet", role: "Data Scientist", photo: mathiasCharconnetPhoto },
+  { name: "Sandra García", role: "Financial Analyst", photo: sandraGarciaPhoto },
+  { name: "Tiago Olo", role: "Founder Associate", photo: tiagoOloPhoto },
 ];
 
 const ADVISORS: Member[] = [
-  { name: "Christina Nesheva", role: "Commercial Advisor", linkedin: "https://www.linkedin.com/in/christina-nesheva/", photo: christinaNeshevaPhoto },
   { name: "Dr. Jonathan Souquet", role: "Tech / Industry Advisor", linkedin: "https://www.linkedin.com/in/jonathan-souquet-a192ab10/", photo: jonathanSouquetPhoto },
+  { name: "Christina Nesheva", role: "Commercial Advisor", linkedin: "https://www.linkedin.com/in/christina-nesheva/", photo: christinaNeshevaPhoto },
   { name: "Dr. Carolina Villa", role: "Investor & Advisor", linkedin: "https://www.linkedin.com/in/carovilla/", photo: carolinaVillaPhoto },
 ];
 

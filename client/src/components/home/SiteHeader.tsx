@@ -6,11 +6,16 @@ interface SiteHeaderProps {
   soundEnabled: boolean;
   reducedMotion: boolean;
   onToggleSound: () => void;
+  heroVolume: number;
 }
 
-export default function SiteHeader({ soundEnabled, reducedMotion, onToggleSound }: SiteHeaderProps) {
+// Below this, the hero soundtrack is close enough to silent that the toggle stops being relevant.
+const SOUND_FADE_THRESHOLD = 0.4;
+
+export default function SiteHeader({ soundEnabled, reducedMotion, onToggleSound, heroVolume }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const soundToggleOpacity = Math.min(1, heroVolume / SOUND_FADE_THRESHOLD);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -56,6 +61,7 @@ export default function SiteHeader({ soundEnabled, reducedMotion, onToggleSound 
               aria-label={soundEnabled ? "Mute hero soundtrack" : "Play hero soundtrack"}
               aria-pressed={soundEnabled}
               disabled={reducedMotion}
+              style={{ opacity: soundToggleOpacity, pointerEvents: soundToggleOpacity < 0.05 ? "none" : "auto" }}
             >
               <span className="header-sound-toggle__icon" aria-hidden="true">
                 {soundEnabled ? <Volume2 size={15} strokeWidth={1.6} /> : <VolumeX size={15} strokeWidth={1.6} />}

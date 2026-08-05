@@ -6,11 +6,9 @@
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import type { FormEvent } from "react";
-
-type FocusField = "name" | "email" | "company" | "challenge" | null;
+import DataLayersVisual from "./DataLayersVisual";
 
 export default function ContactStation() {
-  const [focusField, setFocusField] = useState<FocusField>(null);
   const [prepared, setPrepared] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -26,25 +24,8 @@ export default function ContactStation() {
     );
 
     setPrepared(true);
-    setFocusField(null);
     window.location.href = `mailto:juan@cultzyme.com?subject=${subject}&body=${body}`;
   };
-
-  const activeLayer = prepared
-    ? "all"
-    : focusField === "company"
-      ? "model"
-      : focusField === "challenge"
-        ? "act"
-        : focusField
-          ? "sense"
-          : "standby";
-
-  const status = prepared
-    ? "CONTROL BRIEF / READY"
-    : focusField
-      ? `MAPPING / ${focusField.toUpperCase()}`
-      : "";
 
   return (
     <section className="contact-station" id="contact">
@@ -62,19 +43,19 @@ export default function ContactStation() {
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="contact-field">
               <label htmlFor="contact-name">NAME</label>
-              <input id="contact-name" name="name" type="text" autoComplete="name" required onFocus={() => setFocusField("name")} onBlur={() => setFocusField(null)} />
+              <input id="contact-name" name="name" type="text" autoComplete="name" required  />
             </div>
             <div className="contact-field">
               <label htmlFor="contact-email">WORK EMAIL</label>
-              <input id="contact-email" name="email" type="email" autoComplete="email" required onFocus={() => setFocusField("email")} onBlur={() => setFocusField(null)} />
+              <input id="contact-email" name="email" type="email" autoComplete="email" required  />
             </div>
             <div className="contact-field contact-field--wide">
               <label htmlFor="contact-company">COMPANY</label>
-              <input id="contact-company" name="company" type="text" autoComplete="organization" required onFocus={() => setFocusField("company")} onBlur={() => setFocusField(null)} />
+              <input id="contact-company" name="company" type="text" autoComplete="organization" required  />
             </div>
             <div className="contact-field contact-field--wide">
               <label htmlFor="contact-challenge">CURRENT CHALLENGE</label>
-              <textarea id="contact-challenge" name="challenge" rows={4} required onFocus={() => setFocusField("challenge")} onBlur={() => setFocusField(null)} />
+              <textarea id="contact-challenge" name="challenge" rows={4} required  />
             </div>
             <div className="contact-form__action contact-field--wide">
               <button type="submit">
@@ -85,24 +66,7 @@ export default function ContactStation() {
           </form>
         </div>
 
-        <div className={`control-aperture-panel is-${activeLayer}`} aria-label="Cultzyme control aperture showing Sense, Model and Act layers">
-          {status ? <div className="control-aperture-status"><i />{status}</div> : null}
-          <div className="control-aperture" aria-hidden="true">
-            <span className="control-aperture__ring control-aperture__ring--outer" />
-            <span className="control-aperture__ring control-aperture__ring--model" />
-            <span className="control-aperture__ring control-aperture__ring--act" />
-            <span className="control-aperture__axis control-aperture__axis--x" />
-            <span className="control-aperture__axis control-aperture__axis--y" />
-            <span className="control-aperture__core"><i />GLASS BOX<small>CONTROL APERTURE</small></span>
-            <span className="control-aperture__node control-aperture__node--sense"><i />SENSE</span>
-            <span className="control-aperture__node control-aperture__node--model"><i />MODEL</span>
-            <span className="control-aperture__node control-aperture__node--act"><i />ACT</span>
-          </div>
-          <div className="control-aperture-formula" aria-hidden="true">
-            <span>MULTIPARAMETER SENSING</span><i /><span>AGENTIC MODELS</span><i /><span>PHYSICAL AI</span>
-          </div>
-          <p>CULTZYME</p>
-        </div>
+        <DataLayersVisual />
       </div>
     </section>
   );

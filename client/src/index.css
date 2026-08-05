@@ -298,7 +298,7 @@ textarea:focus-visible {
   letter-spacing: 0.045em;
   backdrop-filter: blur(18px) saturate(130%);
   box-shadow: 0 12px 36px rgb(0 0 0 / 0.18);
-  transition: transform 160ms var(--ease-out), border-color 180ms var(--ease-out), background-color 180ms var(--ease-out);
+  transition: transform 160ms var(--ease-out), border-color 180ms var(--ease-out), background-color 180ms var(--ease-out), opacity 200ms var(--ease-out);
 }
 
 .header-sound-toggle:hover {
@@ -652,7 +652,7 @@ textarea:focus-visible {
   letter-spacing: -0.015em;
   text-align: justify;
   text-wrap: pretty;
-  hyphens: auto;
+  hyphens: none;
 }
 
 .v2-hero__actions {
@@ -953,7 +953,7 @@ textarea:focus-visible {
   line-height: 1.52;
   text-align: justify;
   text-wrap: pretty;
-  hyphens: auto;
+  hyphens: none;
   overflow-wrap: anywhere;
 }
 
@@ -1788,7 +1788,7 @@ textarea:focus-visible {
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(430px, 0.78fr);
-  align-items: center;
+  align-items: start;
   gap: clamp(60px, 8vw, 140px);
 }
 
@@ -4644,17 +4644,17 @@ textarea:focus-visible {
   grid-template-columns: 142px minmax(0, 1fr);
 }
 .team-profile-grid--founders .team-profile__photo { width: 142px; }
-.team-profile-grid--advisors .team-profile { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; }
-.team-profile-grid--advisors .team-profile__photo { width: 96px; }
+.team-profile-grid--advisors .team-profile { grid-template-columns: 179px minmax(0, 1fr); gap: 20px; }
+.team-profile-grid--advisors .team-profile__photo { width: 179px; }
 
 @media (max-width: 920px) {
   .team-section--standalone .team-intro { margin-left: 0; }
   .team-group > header { grid-template-columns: 1fr; gap: 26px; }
   .team-profile-grid--advisors { grid-template-columns: 1fr 1fr; }
-  .team-profile-grid--founders .team-profile,
-  .team-profile-grid--advisors .team-profile { grid-template-columns: 96px minmax(0, 1fr); }
-  .team-profile-grid--founders .team-profile__photo,
-  .team-profile-grid--advisors .team-profile__photo { width: 96px; }
+  .team-profile-grid--founders .team-profile { grid-template-columns: 96px minmax(0, 1fr); }
+  .team-profile-grid--advisors .team-profile { grid-template-columns: 179px minmax(0, 1fr); }
+  .team-profile-grid--founders .team-profile__photo { width: 96px; }
+  .team-profile-grid--advisors .team-profile__photo { width: 179px; }
 }
 
 @media (max-width: 620px) {
@@ -4666,22 +4666,17 @@ textarea:focus-visible {
   .team-profile,
   .team-profile:first-child,
   .team-profile:last-child,
-  .team-profile-grid--founders .team-profile,
-  .team-profile-grid--advisors .team-profile { min-height: auto; padding: 20px 0; grid-template-columns: 92px minmax(0, 1fr); gap: 18px; border-right: 0; border-top: 1px solid rgb(157 180 197 / 0.22); }
+  .team-profile-grid--founders .team-profile { min-height: auto; padding: 20px 0; grid-template-columns: 92px minmax(0, 1fr); gap: 18px; border-right: 0; border-top: 1px solid rgb(157 180 197 / 0.22); }
+  .team-profile-grid--advisors .team-profile { min-height: auto; padding: 20px 0; grid-template-columns: 170px minmax(0, 1fr); gap: 18px; border-right: 0; border-top: 1px solid rgb(157 180 197 / 0.22); }
   .team-profile__photo,
-  .team-profile-grid--founders .team-profile__photo,
-  .team-profile-grid--advisors .team-profile__photo { width: 92px; aspect-ratio: 1; }
+  .team-profile-grid--founders .team-profile__photo { width: 92px; aspect-ratio: 1; }
+  .team-profile-grid--advisors .team-profile__photo { width: 170px; aspect-ratio: 1; }
   .team-join { padding: 52px 22px; }
 }
 
 /* ============================================================
    DataLayersVisual v2 — staggered intro + depth tilt
-   PREVIEW ONLY — scoped to .contact-station--preview
    ============================================================ */
-
-.contact-station--preview .contact-layout {
-  align-items: start;
-}
 
 .data-layers {
   position: relative;
@@ -4829,4 +4824,105 @@ textarea:focus-visible {
     0% { opacity: 0; transform: translateX(0) translateY(80px) translateZ(0); }
     100% { opacity: 1; transform: translateX(45px) translateY(22px) translateZ(100px); }
   }
+}
+
+/* ============================================================
+   ScaleUpVisual — diagonal bioreactor scale-up animation
+
+   POSICIONAMIENTO:
+   Va dentro de .horizon-section como hermano del .horizon-orbit
+   Se posiciona absolutamente sobre el area derecha de la seccion.
+   ============================================================ */
+
+.scale-visual {
+  position: absolute;
+  z-index: 2;
+  top: 22%;
+  right: 10%;
+  transform: translateY(-50%);
+  width: min(50vw, 650px);
+  pointer-events: none;
+}
+
+.scale-visual__canvas {
+  width: 100%;
+}
+
+.scale-visual__canvas svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Vessels hidden by default */
+.scale-visual__vessel,
+.scale-visual__line,
+.scale-visual__dot,
+.scale-visual__labels {
+  opacity: 0;
+}
+
+/* IMPORTANTE: NO usar CSS transform en las animaciones de vessels
+   porque sobreescribe el SVG transform de posicionamiento */
+
+/* Staggered intro on scroll — solo opacity */
+[data-visible="true"] .scale-visual__vessel--lab {
+  animation: sv-fade-in 1s var(--ease-out) both;
+}
+
+[data-visible="true"] .scale-visual__vessel--pilot {
+  animation: sv-fade-in 1s 0.3s var(--ease-out) both;
+}
+
+[data-visible="true"] .scale-visual__vessel--plant {
+  animation: sv-fade-in 1s 0.6s var(--ease-out) both;
+}
+
+[data-visible="true"] .scale-visual__line {
+  animation: sv-fade-in 0.8s 1.2s var(--ease-out) both;
+}
+
+[data-visible="true"] .scale-visual__dot {
+  animation: sv-fade-in 0.6s 1.4s var(--ease-out) both;
+}
+
+[data-visible="true"] .scale-visual__dot--pilot {
+  animation-delay: 1.6s;
+}
+
+[data-visible="true"] .scale-visual__dot--plant {
+  animation-delay: 1.8s;
+}
+
+[data-visible="true"] .scale-visual__labels {
+  animation: sv-fade-in 0.8s 2s var(--ease-out) both;
+}
+
+@keyframes sv-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scale-visual__vessel,
+  .scale-visual__line,
+  .scale-visual__dot,
+  .scale-visual__labels {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1180px) {
+  .scale-visual { width: min(45vw, 550px); right: 5%; }
+}
+
+@media (max-width: 920px) {
+  .scale-visual { position: relative; top: auto; right: auto; transform: none; width: 100%; max-width: 500px; margin: 60px auto 0; }
+}
+
+@media (max-width: 480px) {
+  .scale-visual { max-width: 360px; }
 }

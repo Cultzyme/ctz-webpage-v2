@@ -1,3 +1,4 @@
+import ScaleUpVisual from "@/components/ScaleUpVisual";
 import ObservationLabel from "./ObservationLabel";
 
 export default function HorizonSection() {
@@ -9,6 +10,7 @@ export default function HorizonSection() {
         <span className="horizon-orbit__inner" />
         <span className="horizon-orbit__signal" />
       </div>
+      <ScaleUpVisual />
       <div className="v2-shell horizon-layout" data-reveal>
         <ObservationLabel>BUILT FOR CELLS / READY FOR SCALE</ObservationLabel>
         <h2>Built for cells.<br /><em>Ready for scale.</em></h2>

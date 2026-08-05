@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import ContactStation from "@/components/ContactStation";
-import ContactStationPreview from "@/components/ContactStationPreview";
 import HeroSection from "@/components/home/HeroSection";
 import HorizonSection from "@/components/home/HorizonSection";
 import LoopSection from "@/components/home/LoopSection";
@@ -13,6 +12,7 @@ import VisionSection from "@/components/home/VisionSection";
 export default function Home() {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [heroVolume, setHeroVolume] = useState(1);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -95,6 +95,34 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    const hero = document.getElementById("top");
+    if (!video || !hero) return;
+
+    let frame = 0;
+    const updateVolume = () => {
+      // Fade out over the hero's own height so the sound is gone by the time it scrolls off screen.
+      const progress = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
+      // Ears perceive loudness logarithmically, so an eased curve (not a linear one) is what reads as a gradual fade.
+      const eased = 1 - progress ** 2;
+      video.volume = eased;
+      setHeroVolume(eased);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateVolume);
+    };
+
+    updateVolume();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   const toggleHeroSound = async () => {
     const video = heroVideoRef.current;
     if (!video || reducedMotion) return;
@@ -119,7 +147,12 @@ export default function Home() {
     <div className="observatory">
       <a className="skip-link" href="#main-content">Skip to content</a>
 
-      <SiteHeader soundEnabled={soundEnabled} reducedMotion={reducedMotion} onToggleSound={toggleHeroSound} />
+      <SiteHeader
+        soundEnabled={soundEnabled}
+        reducedMotion={reducedMotion}
+        onToggleSound={toggleHeroSound}
+        heroVolume={heroVolume}
+      />
 
       <main id="main-content">
         <HeroSection videoRef={heroVideoRef} soundEnabled={soundEnabled} />
@@ -129,7 +162,6 @@ export default function Home() {
         <VisionSection />
         <HorizonSection />
         <ContactStation />
-        <ContactStationPreview />
       </main>
 
       <SiteFooter />
