@@ -14,6 +14,46 @@ export default function Home() {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [heroVolume, setHeroVolume] = useState(1);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const gainNodeRef = useRef<GainNode | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const heroVolumeRef = useRef(1);
+  const soundEnabledRef = useRef(soundEnabled);
+
+  useEffect(() => {
+    soundEnabledRef.current = soundEnabled;
+    if (gainNodeRef.current) {
+      gainNodeRef.current.gain.value = soundEnabled ? heroVolumeRef.current : 0;
+    }
+  }, [soundEnabled]);
+
+  // iOS Safari ignores `video.volume` entirely — it only honors the hardware volume buttons.
+  // Routing the element's audio through a Web Audio GainNode sidesteps that: the gain is applied
+  // to the decoded signal itself, before it ever reaches the part of the pipeline iOS locks down.
+  const getGainNode = () => {
+    if (gainNodeRef.current) return gainNodeRef.current;
+    const video = heroVideoRef.current;
+    const AudioContextClass =
+      window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    if (!video || !AudioContextClass) return null;
+
+    try {
+      const context = new AudioContextClass();
+      const source = context.createMediaElementSource(video);
+      const gain = context.createGain();
+      gain.gain.value = soundEnabledRef.current ? heroVolumeRef.current : 0;
+      source.connect(gain).connect(context.destination);
+      audioContextRef.current = context;
+      gainNodeRef.current = gain;
+      return gain;
+    } catch {
+      return null;
+    }
+  };
+
+  const resumeAudioGraph = () => {
+    getGainNode();
+    void audioContextRef.current?.resume();
+  };
 
   useEffect(() => {
     const revealNodes = document.querySelectorAll<HTMLElement>("[data-reveal]");
@@ -45,7 +85,13 @@ export default function Home() {
       const video = heroVideoRef.current;
       if (!video) return;
       video.muted = false;
-      video.play().then(() => setSoundEnabled(true)).catch(() => undefined);
+      video
+        .play()
+        .then(() => {
+          resumeAudioGraph();
+          setSoundEnabled(true);
+        })
+        .catch(() => undefined);
     };
 
     const attachInteractionUnmute = () => {
@@ -78,7 +124,10 @@ export default function Home() {
       video.muted = false;
       video
         .play()
-        .then(() => setSoundEnabled(true))
+        .then(() => {
+          resumeAudioGraph();
+          setSoundEnabled(true);
+        })
         .catch(() => {
           video.muted = true;
           setSoundEnabled(false);
@@ -106,8 +155,15 @@ export default function Home() {
       const progress = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
       // Ears perceive loudness logarithmically, so an eased curve (not a linear one) is what reads as a gradual fade.
       const eased = 1 - progress ** 2;
-      video.volume = eased;
+      heroVolumeRef.current = eased;
       setHeroVolume(eased);
+
+      const gain = getGainNode();
+      if (gain) {
+        gain.gain.value = soundEnabledRef.current ? eased : 0;
+      } else {
+        video.volume = eased;
+      }
     };
 
     const onScroll = () => {
@@ -136,6 +192,7 @@ export default function Home() {
     video.muted = false;
     try {
       await video.play();
+      resumeAudioGraph();
       setSoundEnabled(true);
     } catch {
       video.muted = true;

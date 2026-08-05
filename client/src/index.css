@@ -2480,7 +2480,7 @@ textarea:focus-visible {
   .observation-label i { width: 7px; height: 7px; }
   .v2-hero { min-height: 980px; }
   .v2-hero__content { min-height: 980px; padding-block: 106px 58px; }
-  .v2-hero h1 { margin-top: 58px; font-size: clamp(4.1rem, 18vw, 5.9rem); line-height: 0.82; }
+  .v2-hero h1 { margin-top: 58px; font-size: clamp(3.69rem, 16.2vw, 5.31rem); line-height: 0.82; }
   .hero-category { margin-top: 20px; font-size: 1.04rem; }
   .hero-scope { max-width: 330px; font-size: 0.44rem; }
   .hero-brand-stamp { align-items: flex-start; flex-direction: column; gap: 0; }
