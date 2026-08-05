@@ -45,9 +45,9 @@ const TEAM: Member[] = [
 ];
 
 const ADVISORS: Member[] = [
-  { name: "Dr. Jonathan Souquet", role: "Tech / Industry Advisor", linkedin: "https://www.linkedin.com/in/jonathan-souquet-a192ab10/", photo: jonathanSouquetPhoto },
-  { name: "Christina Nesheva", role: "Commercial Advisor", linkedin: "https://www.linkedin.com/in/christina-nesheva/", photo: christinaNeshevaPhoto },
-  { name: "Dr. Carolina Villa", role: "Investor & Advisor", linkedin: "https://www.linkedin.com/in/carovilla/", photo: carolinaVillaPhoto },
+  { name: "Dr. Jonathan Souquet", role: "Tech / Industry Advisor", photo: jonathanSouquetPhoto },
+  { name: "Christina Nesheva", role: "Commercial Advisor", photo: christinaNeshevaPhoto },
+  { name: "Dr. Carolina Villa", role: "Investor & Advisor", photo: carolinaVillaPhoto },
 ];
 
 type ProfileSlotProps = {
