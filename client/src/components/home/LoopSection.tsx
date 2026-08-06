@@ -169,7 +169,7 @@ export default function LoopSection() {
         <div className="loop-bridge__atmosphere" aria-hidden="true" />
         <div className="v2-shell loop-bridge__layout" data-reveal>
           <h2 id="loop-bridge-title">
-            One loop.<br /><em>Real intelligence<span className="loop-bridge__dot" ref={intelligenceDotRef}>.</span></em>
+            One loop.<br /><em style={{ fontFamily: "'Playfair Display', serif" }}>Real intelligence<span className="loop-bridge__dot" ref={intelligenceDotRef}>.</span></em>
           </h2>
           <div className="loop-bridge__copy">
             <ObservationLabel>SENSE → MODEL → AUTOMATE</ObservationLabel>

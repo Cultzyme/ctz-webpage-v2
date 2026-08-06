@@ -37,7 +37,8 @@ export default function HeroSection({ videoRef, soundEnabled }: HeroSectionProps
       <div className="v2-hero__veil" aria-hidden="true" />
 
       <div className="v2-shell v2-hero__content" data-reveal>
-        <h1>Self-driving biomanufacturing.<br /><em>From live signal</em><br />to physical action.</h1>
+        <h1 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}>Test</h1>
+        <h1>Self-driving biomanufacturing.<br /><em>From <span style={{ fontFamily: "'Playfair Display', serif" }}>live signal</span></em><br />to physical action.</h1>
         <div className="v2-hero__lower">
           <p>
             Cultzyme turns live multiparameter process data into model-driven, automated action. One intelligence

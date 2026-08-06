@@ -7,7 +7,7 @@ export default function OperationalCaseSection() {
       <div className="v2-shell operational-case-layout" data-reveal>
         <header>
           <ObservationLabel>ONE DEVIATION / ONE CLOSED LOOP</ObservationLabel>
-          <h2>See it before it becomes<br /><em>a failed run.</em></h2>
+          <h2>See it before it becomes<br /><em style={{ fontFamily: "'Playfair Display', serif" }}>a failed run.</em></h2>
           <p>A single process event shows how Cultzyme moves from observation to physical action.</p>
         </header>
         <div className="operational-case-flow">
@@ -19,12 +19,12 @@ export default function OperationalCaseSection() {
         <section className="loop-outcomes" aria-labelledby="loop-outcomes-title">
           <header className="loop-outcomes__header">
             <ObservationLabel>RESULTS / CLOSED LOOP</ObservationLabel>
-            <h3 id="loop-outcomes-title">What you get<br /><em>out of the loop.</em></h3>
+            <h3 id="loop-outcomes-title">What you get<br /><em style={{ fontFamily: "'Playfair Display', serif" }}>out of the loop.</em></h3>
           </header>
           <div className="loop-outcomes__grid">
             <article>
               <span>CONSISTENCY</span>
-              <h4>Right-first-time, batch after batch</h4>
+              <h4>Right first-time, batch after batch</h4>
               <p>Tighter batch-to-batch variability and higher RFT, whoever is on shift and wherever it runs.</p>
             </article>
             <article>

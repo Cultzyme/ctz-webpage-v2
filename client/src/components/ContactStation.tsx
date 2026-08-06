@@ -33,7 +33,7 @@ export default function ContactStation() {
       <div className="v2-shell contact-layout">
         <div className="contact-copy" data-reveal>
           <span className="observation-label"><i aria-hidden="true" />START WITH YOUR PROCESS</span>
-          <h2>Bring us your process.<br /><em>We&apos;ll map the loop.</em></h2>
+          <h2>Bring us your process.<br /><em style={{ fontFamily: "'Playfair Display', serif" }}>We&apos;ll map the loop.</em></h2>
           <p>
             Tell us where data arrives too late, where scale-up creates uncertainty or where an approved
             action still depends on manual intervention. We’ll identify the fastest starting point: sensing,

@@ -134,7 +134,7 @@ export default function Team() {
         <section className="team-section team-section--standalone" id="team">
           <div className="manifesto-shell">
             <span className="manifesto-kicker"><i />CULTZYME / MULTIDISCIPLINARY BY DESIGN</span>
-            <h1>Different disciplines.<br /><em>One mission.</em></h1>
+            <h1>Different disciplines.<br /><em style={{ fontFamily: "'Playfair Display', serif" }}>One mission.</em></h1>
             <p className="team-intro">
               Cultzyme is a multidisciplinary team built across biology, engineering, AI and industrial systems.
               We work as one to move biomanufacturing from observation to autonomous action.

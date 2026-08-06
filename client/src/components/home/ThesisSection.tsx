@@ -6,7 +6,7 @@ export default function ThesisSection() {
       <div className="thesis-signal" aria-hidden="true"><i /><span /></div>
       <div className="v2-shell thesis-layout" data-reveal>
         <ObservationLabel>FROM SPARSE DATA TO SELF-DRIVING BIOPROCESSING</ObservationLabel>
-        <h2>More process truth.<br /><em>Less trial-and-error.</em></h2>
+        <h2>More process truth.<br /><em style={{ fontFamily: "'Playfair Display', serif" }}>Less trial-and-error.</em></h2>
         <div className="thesis-copy">
           <span>FEWER BLIND ITERATIONS</span>
           <p>

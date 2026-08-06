@@ -13,7 +13,7 @@ export default function HorizonSection() {
       <ScaleUpVisual />
       <div className="v2-shell horizon-layout" data-reveal>
         <ObservationLabel>BUILT FOR CELLS / READY FOR SCALE</ObservationLabel>
-        <h2>Built for cells.<br /><em>Ready for scale.</em></h2>
+        <h2>Built for cells.<br /><em style={{ fontFamily: "'Playfair Display', serif" }}>Ready for scale.</em></h2>
         <p>
           Across biologics, biosimilars and ATMPs, Cultzyme carries process understanding from development
           into manufacturing, reducing physical iteration while protecting quality, yield and robustness.

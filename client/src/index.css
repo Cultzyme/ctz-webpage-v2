@@ -5,6 +5,7 @@
  */
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -2484,7 +2485,7 @@ textarea:focus-visible {
   .hero-category { margin-top: 20px; font-size: 1.04rem; }
   .hero-scope { max-width: 330px; font-size: 0.44rem; }
   .hero-brand-stamp { align-items: flex-start; flex-direction: column; gap: 0; }
-  .v2-hero__lower > p { font-size: 1.02rem; }
+  .v2-hero__lower > p { font-size: 0.816rem; }
   .v2-hero__actions { align-items: flex-start; flex-direction: column; gap: 21px; }
   .v2-hero__image { top: 37%; right: 0; width: 100%; height: 47%; object-position: center; opacity: 0.62; }
   .hero-observation--signal { top: 61%; right: 12px; transform: scale(0.9); transform-origin: right; }
@@ -2497,11 +2498,11 @@ textarea:focus-visible {
   .thesis-signal { left: 26px; height: 86px; }
   .thesis-section h2 { margin-top: 72px; font-size: clamp(2.8rem, 13.6vw, 4.16rem); line-height: 0.87; }
   .thesis-copy { grid-template-columns: 1fr; gap: 18px; }
-  .thesis-copy p { font-size: 1rem; }
+  .thesis-copy p { font-size: 0.8rem; }
   .journey-scene { min-height: auto; padding-block: 95px; }
   .scene-number { margin-bottom: 44px; }
   .scene-copy h3 { margin-top: 35px; font-size: clamp(2.64rem, 12.8vw, 3.76rem); }
-  .scene-copy > p { font-size: 1rem; }
+  .scene-copy > p { font-size: 0.8rem; }
   .scene-visual { min-height: 500px; margin-inline: 0; }
   .scene-readout--top { top: 9%; right: 7%; }
   .scene-readout--bottom { right: 7%; bottom: 9%; }
@@ -2527,7 +2528,7 @@ textarea:focus-visible {
   .horizon-section { min-height: 890px; padding-block: 120px 80px; }
   .horizon-layout { min-height: 690px; }
   .horizon-section h2 { margin-top: 85px; font-size: clamp(3.2rem, 14.4vw, 4.64rem); }
-  .horizon-layout > p { font-size: 1rem; }
+  .horizon-layout > p { font-size: 0.8rem; }
   .horizon-orbit { top: 59%; right: -74%; width: 160vw; opacity: 0.48; }
   .scale-track { gap: 9px; }
   .v2-closing { min-height: 770px; padding-block: 110px 72px; }
@@ -2540,7 +2541,7 @@ textarea:focus-visible {
   .contact-station { min-height: 1420px; padding-block: 110px 78px; }
   .contact-axis { left: 20px; height: 76px; }
   .contact-copy h2 { margin-top: 76px; font-size: clamp(3.04rem, 14.4vw, 4.4rem); line-height: 0.84; }
-  .contact-copy > p { font-size: 1rem; }
+  .contact-copy > p { font-size: 0.8rem; }
   .contact-form { margin-top: 54px; grid-template-columns: 1fr; }
   .contact-field,
   .contact-field:nth-child(even),
@@ -3892,7 +3893,7 @@ textarea:focus-visible {
   .loop-outcomes__grid { grid-template-columns: 1fr; }
   .loop-outcomes__grid article { min-height: 270px; padding: 27px 22px; }
   .loop-outcomes__grid h4 { margin-top: 52px; font-size: clamp(1.9rem, 8.5vw, 2.8rem); }
-  .loop-outcomes__grid p { font-size: 0.92rem; }
+  .loop-outcomes__grid p { font-size: 0.736rem; }
 }
 
 /* Cultzyme V11 — compact connected flow.
@@ -4355,7 +4356,7 @@ textarea:focus-visible {
   .loop-bridge__layout { gap: 58px; padding-block: 92px; }
   .loop-bridge h2 { font-size: clamp(3.28rem, 15.2vw, 4.64rem); }
   .loop-bridge__copy { margin-left: 0; }
-  .loop-bridge__copy > p { margin-bottom: 38px; font-size: 1rem; }
+  .loop-bridge__copy > p { margin-bottom: 38px; font-size: 0.8rem; }
   .loop-bridge__sequence { align-items: flex-start; flex-direction: column; gap: 10px; }
   .loop-bridge__sequence i {
     width: 1px;
@@ -4492,7 +4493,7 @@ textarea:focus-visible {
     font-size: clamp(2.92rem, 13.2vw, 4.08rem);
     line-height: 0.9;
   }
-  .autonomous-vision-section .autonomous-vision__layout > p { font-size: 1rem; }
+  .autonomous-vision-section .autonomous-vision__layout > p { font-size: 0.8rem; }
   .autonomous-vision__orbits { top: 28%; right: -56%; width: 145vw; opacity: 0.72; }
 }
 

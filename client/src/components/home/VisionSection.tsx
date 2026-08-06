@@ -8,7 +8,7 @@ export default function VisionSection() {
         <ObservationLabel>VISION / AUTONOMOUS BIOLOGICS</ObservationLabel>
         <h2 id="autonomous-vision-title">
           The world taught AI to<br />discover biologics.<br />
-          <em>We&apos;re teaching it to<br />manufacture them.</em>
+          <em style={{ fontFamily: "'Playfair Display', serif" }}>We&apos;re teaching it to<br />manufacture them.</em>
         </h2>
         <p>
           Manufacturing is where biologics succeed or fail and much of it still depends on sparse data and
